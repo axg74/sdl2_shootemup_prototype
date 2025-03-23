@@ -20,7 +20,7 @@ $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
 clean:
-	rm -rf $(BUILD_DIR)
+	del /q $(BUILD_DIR)\*
 
 run: all
 	$(BUILD_DIR)/$(EXE_NAME)

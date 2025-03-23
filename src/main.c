@@ -108,7 +108,7 @@ void game_update()
 {
     player_update();
     player_update_shots();
-    scroll_level_background(delta_time);
+    scroll_level_background();
 }
 
 bool game_init()

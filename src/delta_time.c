@@ -14,3 +14,8 @@ void delta_time_update()
     delta_time = ( (float) current_time - (float) delta_time_last) / 1000.0f;
     delta_time_last = current_time;
 }
+
+float get_delta_time() 
+{
+    return delta_time;
+}

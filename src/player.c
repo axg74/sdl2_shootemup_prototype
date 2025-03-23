@@ -64,8 +64,8 @@ void player_update()
     if (key_up) dir_y= -1;
     if (key_down) dir_y= 1;
 
-    x += dir_x * sprite_get_speed_x(&spr_player) * delta_time;
-    y += dir_y * sprite_get_speed_y(&spr_player) * delta_time;
+    x += dir_x * sprite_get_speed_x(&spr_player) * get_delta_time();
+    y += dir_y * sprite_get_speed_y(&spr_player) * get_delta_time();
 
     if (x < 0) x = 0;
     if (y < 0) y = 0;
@@ -84,7 +84,7 @@ void player_update()
         }
     }
 
-    player_shot_delay -= 40 * delta_time;
+    player_shot_delay -= 40 * get_delta_time();
 }
 
 void player_init_shot1(int i)
@@ -105,7 +105,7 @@ void player_update_shots()
         {
             float x = sprite_get_x(&spr_player_shots[i]);
             float y = sprite_get_y(&spr_player_shots[i]);
-            x += sprite_get_speed_x(&spr_player_shots[i]) * delta_time;
+            x += sprite_get_speed_x(&spr_player_shots[i]) * get_delta_time();
 
             if (x > GAME_WIDTH)
             {

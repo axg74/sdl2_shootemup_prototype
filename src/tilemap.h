@@ -11,6 +11,6 @@ extern float scroll_speed_x;
 
 void calc_tilepos_tab(void);
 void tilemap_draw(SDL_Texture *tileset);
-void scroll_level_background(float dt);
+void scroll_level_background();
 
 #endif

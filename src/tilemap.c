@@ -4,6 +4,7 @@
 #include "main.h"
 #include "gfx.h"
 #include "tilemap.h"
+#include "delta_time.h"
 
 float scroll_pos_x;
 float scroll_speed_x;
@@ -42,7 +43,7 @@ void tilemap_draw(SDL_Texture *tileset)
     }
 }
 
-void scroll_level_background(float dt)
+void scroll_level_background()
 {
-    scroll_pos_x += scroll_speed_x * dt;
+    scroll_pos_x += scroll_speed_x * get_delta_time();
 }
