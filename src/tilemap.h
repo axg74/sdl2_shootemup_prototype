@@ -8,7 +8,6 @@
 
 void tilemap_init(void);
 void tilemap_draw(SDL_Texture *tileset);
-void scroll_level_background();
 
 float tilemap_get_scroll_pos_x(void);
 float tilemap_get_scroll_pos_y(void);

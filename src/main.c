@@ -20,6 +20,8 @@ void game_quit(void);
 bool load_data(void);
 void unload_data(void);
 
+void scroll_level(void);
+
 int main(int argc, char *argv[])
 {
     (void) argc;
@@ -101,7 +103,7 @@ void game_update()
 
     player_update();
     player_update_shots();
-    scroll_level_background();
+    scroll_level();
 }
 
 bool game_init()
@@ -119,4 +121,11 @@ void game_quit()
 {
     destroy_window();
     SDL_Quit();
+}
+
+void scroll_level()
+{
+    float level_pos_x = tilemap_get_scroll_pos_x();
+    level_pos_x += tilemap_get_scroll_speed_x() * get_delta_time();
+    tilemap_set_scroll_pos_x(level_pos_x);
 }

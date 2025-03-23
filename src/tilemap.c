@@ -14,11 +14,6 @@ float scroll_speed_y;
 
 int tile_postab[MAX_TILES * 2];
 
-void scroll_level_background()
-{
-    scroll_pos_x += scroll_speed_x * get_delta_time();
-}
-
 void tilemap_draw(SDL_Texture *tileset)
 {
     int tile_id = 2;
