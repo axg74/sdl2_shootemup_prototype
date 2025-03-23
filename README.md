@@ -4,15 +4,20 @@ a shoot em up 2d game hobby project in C using SDL2 library.
 used tools:
     
     VScode
-    ====================================================
+
     tdm-gcc c-compiler 
-    
     https://github.com/jmeubank tdm-gcc/releases/download/v10.3.0-tdm64-2/tdm64-gcc-10.3.0-2.exe
-    ====================================================
+    
     SDL2-Library
- 
     https://github.com/libsdl-org/SDL/releases/tag/
     release-2.32.2
+
+    Aseprite
+    https://www.aseprite.org/
+
+    Tiled
+    https://www.mapeditor.org/
+
 
 # basic considerations
 
