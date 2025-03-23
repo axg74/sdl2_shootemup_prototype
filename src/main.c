@@ -12,18 +12,18 @@
 #include "events.h"
 
 bool game_init(void);
-void game_quit(void);
-void game_draw(void);
 void game_update(void);
+void game_draw(void);
 void game_mainloop(void);
+void game_quit(void);
 
 bool load_data(void);
 void unload_data(void);
 
 int main(int argc, char *argv[])
 {
-    (void)argc;
-    (void)argv;
+    (void) argc;
+    (void) argv;
     
     if (!game_init()) {
         game_quit();
@@ -51,6 +51,8 @@ void game_mainloop()
     tilemap_init();
     delta_time_init();
 
+    tilemap_set_scroll_pos_x(0.0f);
+    tilemap_set_scroll_speed_x(20.0f);
     is_running = true;
 
     while(is_running)

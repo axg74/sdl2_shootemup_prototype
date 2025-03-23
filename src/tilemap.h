@@ -6,11 +6,19 @@
 #define TILESHEET_WIDTH 256
 #define TILESHEET_HEIGHT 256
 
-extern float scroll_pos_x;
-extern float scroll_speed_x;
-
 void tilemap_init(void);
 void tilemap_draw(SDL_Texture *tileset);
 void scroll_level_background();
 
+float tilemap_get_scroll_pos_x(void);
+float tilemap_get_scroll_pos_y(void);
+
+void tilemap_set_scroll_pos_x(float x);
+void tilemap_set_scroll_pos_y(float y);
+
+float tilemap_get_scroll_speed_x(void);
+float tilemap_get_scroll_speed_y(void);
+
+void tilemap_set_scroll_speed_x(float x);
+void tilemap_set_scroll_speed_y(float y);
 #endif

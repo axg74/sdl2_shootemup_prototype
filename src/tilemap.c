@@ -7,7 +7,10 @@
 #include "delta_time.h"
 
 float scroll_pos_x;
+float scroll_pos_y;
+
 float scroll_speed_x;
+float scroll_speed_y;
 
 int tile_postab[MAX_TILES * 2];
 
@@ -51,7 +54,44 @@ void calc_tilepos_tab()
 void tilemap_init()
 {
     calc_tilepos_tab();
+}
 
-    scroll_pos_x = 0.0f;
-    scroll_speed_x = 20.0f;
+float tilemap_get_scroll_pos_x()
+{
+    return scroll_pos_x;
+}
+
+float tilemap_get_scroll_pos_y()
+{
+    return scroll_pos_y;
+}
+
+void tilemap_set_scroll_pos_x(float x)
+{
+    scroll_pos_x = x;
+}
+
+void tilemap_set_scroll_pos_y(float y)
+{
+    scroll_pos_y = y;
+}
+
+float tilemap_get_scroll_speed_x()
+{
+    return scroll_speed_x;
+}
+
+float tilemap_get_scroll_speed_y()
+{
+    return scroll_speed_y;
+}
+
+void tilemap_set_scroll_speed_x(float x)
+{
+    scroll_speed_x = x;
+}
+
+void tilemap_set_scroll_speed_y(float y)
+{
+    scroll_speed_x = y;
 }
