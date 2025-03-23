@@ -96,7 +96,7 @@ void player_init_shot1(int i)
     sprite_set_pos(&spr_player_shots[i], sprite_get_x(&spr_player) + 16, sprite_get_y(&spr_player) + 6);
     sprite_set_size(&spr_player_shots[i], 16, 7);
     sprite_set_source(&spr_player_shots[i], 48, 0);
-    sprite_set_sprite_sheet(&spr_player_shots[i], sprite_sheets[0]);
+    sprite_set_sprite_sheet(&spr_player_shots[i], get_spritesheet(0));
     sprite_enable(&spr_player_shots[i]);
     sprite_set_speed(&spr_player_shots[i], 400, 0);
 }

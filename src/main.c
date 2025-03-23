@@ -49,7 +49,7 @@ void game_mainloop()
 {
     bool is_running;
 
-    player_init(sprite_sheets[0]);
+    player_init(get_spritesheet(0));
     tilemap_init();
     delta_time_init();
 
