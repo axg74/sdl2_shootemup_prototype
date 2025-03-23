@@ -77,6 +77,60 @@ void destroy_bmp(SDL_Texture *texture)
     if (texture != NULL) SDL_DestroyTexture(texture);
 }
 
+void unload_spritesheet(int index)
+{
+    if (sprite_sheets[index] != NULL)
+    {
+        destroy_bmp(sprite_sheets[index]);
+        sprite_sheets[index] = NULL;
+    }
+}
+
+bool load_spritesheet(int index, const char *filename)
+{
+    unload_spritesheet(index);
+    sprite_sheets[index] = load_bmp(filename);
+
+    if (sprite_sheets[index] == NULL)
+    {
+        return false;
+    }
+
+    return true;
+}
+
+void unload_tilesheet(int index)
+{
+    if (tilesheets[index] != NULL)
+    {
+        destroy_bmp(tilesheets[index]);
+        tilesheets[index] = NULL;
+    }
+}
+
+bool load_tilesheet(int index, const char *filename)
+{
+    unload_tilesheet(index);
+    tilesheets[index] = load_bmp(filename);
+
+    if (tilesheets[index] == NULL)
+    {
+        return false;
+    }
+
+    return true;
+}
+
+SDL_Texture* get_spritesheet(int index)
+{
+    return sprite_sheets[index];
+}
+
+SDL_Texture* get_tilesheet(int index)
+{
+    return tilesheets[index];
+}
+
 void cls(Uint8 red, Uint8 green, Uint8 blue)
 {
     SDL_SetRenderDrawColor(renderer, red, green, blue, 255);

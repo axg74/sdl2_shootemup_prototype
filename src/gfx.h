@@ -4,14 +4,22 @@
 #include <SDL2/SDL.h>
 #include "sprite.h"
 
-extern SDL_Texture *sprite_sheets[5];
-extern SDL_Texture *tilesheets[5];
+//extern SDL_Texture *sprite_sheets[5];
+//extern SDL_Texture *tilesheets[5];
 
 bool init_window(int width, int height, int scale);
 void destroy_window(void);
 
 SDL_Texture* load_bmp(const char *filename);
 void destroy_bmp(SDL_Texture *texture);
+
+SDL_Texture* get_spritesheet(int index);
+bool load_spritesheet(int index, const char *filename);
+void unload_spritesheet(int index);
+
+SDL_Texture* get_tilesheet(int index);
+bool load_tilesheet(int index, const char *filename);
+void unload_tilesheet(int index);
 
 void cls(Uint8 red, Uint8 green, Uint8 blue);
 void flip(void);

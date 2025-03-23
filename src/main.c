@@ -69,18 +69,23 @@ void game_mainloop()
 
 bool load_data()
 {
-    sprite_sheets[0] = load_bmp("gamedata/spritesheet1.bmp");
-    if (sprite_sheets[0] == NULL) return false;
+    if (!load_spritesheet(0, "gamedata/spritesheet1.bmp"))
+    {
+        return false;
+    }
 
-    tilesheets[0] = load_bmp("gamedata/tileset1.bmp");
-    if ( tilesheets[0] == NULL) return false;
+    if (!load_tilesheet(0, "gamedata/tileset1.bmp"))
+    {
+        return false;
+    }
+
     return true;
 }
 
 void unload_data()
 {
-    destroy_bmp(sprite_sheets[0]);
-    destroy_bmp(tilesheets[0]);
+    unload_spritesheet(0);
+    unload_tilesheet(0);
 }
 
 void game_draw()
@@ -88,7 +93,7 @@ void game_draw()
     enable_backbuffer_rendering();
     cls(0, 50, 0);
 
-    tilemap_draw(tilesheets[0]);
+    tilemap_draw(get_tilesheet(0));
 
     player_draw_sprites();
     disable_backbuffer_rendering();
