@@ -1,7 +1,3 @@
-#include <stdbool.h>
-#include <math.h>
-#include <stdio.h>
-
 #include "gfx.h"
 #include "tilemap.h"
 #include "delta_time.h"
