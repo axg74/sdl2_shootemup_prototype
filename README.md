@@ -3,11 +3,11 @@ a shoot em up 2d game hobby project in C using SDL2 library. I use VScode as cod
 
 # in-game keys
 
-    cursor-keys
-    key-d as fire-button
+    cursor-keys for player movement
+    key-d as primary fire-button
     escape-key to quit
 
-    
+
 # C-Compiler 
 
 I use the tdm-gcc compiler 
