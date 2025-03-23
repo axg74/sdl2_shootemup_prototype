@@ -4,9 +4,6 @@
 #include <SDL2/SDL.h>
 #include "sprite.h"
 
-//extern SDL_Texture *sprite_sheets[5];
-//extern SDL_Texture *tilesheets[5];
-
 bool init_window(int width, int height, int scale);
 void destroy_window(void);
 
