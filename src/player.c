@@ -52,6 +52,9 @@ void player_init(SDL_Texture *texture)
 
 void player_update()
 {
+    int scr_w = get_screen_width();
+    int scr_h = get_screen_height();
+
     float x = sprite_get_x(&spr_player);
     float y = sprite_get_y(&spr_player);
     int width = sprite_get_width(&spr_player);
@@ -70,8 +73,8 @@ void player_update()
 
     if (x < 0) x = 0;
     if (y < 0) y = 0;
-    if (x + width > GAME_WIDTH) x = GAME_WIDTH - width;
-    if (y + height > GAME_HEIGHT) y = GAME_HEIGHT - height;
+    if (x + width > scr_w) x = scr_w - width;
+    if (y + height > scr_h) y = scr_h - height;
 
     sprite_set_pos(&spr_player, x, y);
 
@@ -100,6 +103,8 @@ void player_init_shot1(int i)
 
 void player_update_shots()
 {
+    int scr_w = get_screen_width();
+
     for (int i = 0; i < PLAYER_MAX_SHOTS; i++)
     {
         if (sprite_is_enabled(&spr_player_shots[i]))
@@ -108,7 +113,7 @@ void player_update_shots()
             float y = sprite_get_y(&spr_player_shots[i]);
             x += sprite_get_speed_x(&spr_player_shots[i]) * get_delta_time();
 
-            if (x > GAME_WIDTH)
+            if (x > scr_w)
             {
                 sprite_disable(&spr_player_shots[i]);
                 continue;

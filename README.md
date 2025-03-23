@@ -1,9 +1,9 @@
 # sdl2_shootemup_prototype
-a shoot em up 2d game hobby project in C using SDL2 library.
+a 2d game shoot em up hobby project in C using SDL2 library, fresh at the beginning of development.
 
 used tools:
     
-    VScode
+    VS-Code
 
     tdm-gcc c-compiler 
     https://github.com/jmeubank tdm-gcc/releases/download/v10.3.0-tdm64-2/tdm64-gcc-10.3.0-2.exe
@@ -18,12 +18,13 @@ used tools:
     https://www.mapeditor.org/
 
 
+
 # basic considerations
 
-* horizontal scrolling shoot´em´up game like in the 80s/90s.
+* 2D horizontal scrolling shoot´em´up game like in the 80s/90s.
 * graphics will be stored in BMP-format with a colorkey-mask for the transparency, like in 90s
 * no dynamic memory management, e.g. for sprite data-structures, the number of sprites is fixed from the beginning 
-
+* no sprite-object creation in memory while playing, deactivating unused sprite-objects, only (simple sprite pooling).
 
 # folders
 

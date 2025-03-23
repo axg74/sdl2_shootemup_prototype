@@ -21,7 +21,7 @@ bool init_window(int width, int height, int scale)
     screen_width = width;
     screen_height = height;
     game_scale = scale;
-    
+
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
         return false;
 
@@ -144,4 +144,14 @@ void sprite_draw(Sprite *spr)
 
         SDL_RenderCopy(renderer, spr->texture, &src, &dest);
     }
+}
+
+int get_screen_width()
+{
+    return screen_width;
+}
+
+int get_screen_height()
+{
+    return screen_height;
 }
