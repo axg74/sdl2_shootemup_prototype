@@ -9,8 +9,7 @@ used tools:
     https://github.com/jmeubank tdm-gcc/releases/download/v10.3.0-tdm64-2/tdm64-gcc-10.3.0-2.exe
     
     SDL2-Library
-    https://github.com/libsdl-org/SDL/releases/tag/
-    release-2.32.2
+    https://github.com/libsdl-org/SDL/releases/tag/release-2.32.2
 
     Aseprite
     https://www.aseprite.org/
@@ -31,6 +30,11 @@ used tools:
 ### 0aseprite
 
     game graphics in aseprite-format
+
+
+### 0tiled
+
+    Tiled tile-maps and tilesets
 
 
 ### gamedata 

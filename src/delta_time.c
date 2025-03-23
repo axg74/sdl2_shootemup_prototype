@@ -11,6 +11,6 @@ void delta_time_init()
 void delta_time_update()
 {
     Uint32 current_time = SDL_GetTicks();
-    delta_time = (current_time - delta_time_last) / 1000.0f;
+    delta_time = ( (float) current_time - (float) delta_time_last) / 1000.0f;
     delta_time_last = current_time;
 }
