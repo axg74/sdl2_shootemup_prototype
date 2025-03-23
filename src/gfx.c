@@ -90,8 +90,17 @@ void flip()
     dest.w = GAME_WIDTH * game_scale;
     dest.h = GAME_HEIGHT * game_scale;
     SDL_RenderCopy(renderer, backbuffer, &src, &dest);
-
     SDL_RenderPresent(renderer);
+}
+
+void enable_backbuffer_rendering()
+{
+    SDL_SetRenderTarget(renderer, backbuffer);
+}
+
+void disable_backbuffer_rendering()
+{
+    SDL_SetRenderTarget(renderer, NULL);
 }
 
 void draw_subimage_rect(SDL_Texture *texture, int x, int y, int width, int height, int source_x, int source_y)

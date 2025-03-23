@@ -13,13 +13,12 @@
 
 bool game_init(void);
 void game_quit(void);
-void main_loop(void);
+void game_draw(void);
+void game_update(void);
+void game_mainloop(void);
 
 bool load_data(void);
 void unload_data(void);
-
-void game_draw(void);
-void game_update(void);
 
 int main(int argc, char *argv[])
 {
@@ -37,20 +36,19 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    main_loop();
+    game_mainloop();
 
     unload_data();
     game_quit();
     return 0;
 }
 
-void main_loop()
+void game_mainloop()
 {
     bool is_running;
 
     player_init(sprite_sheets[0]);
     tilemap_init();
-
     delta_time_init();
 
     is_running = true;
@@ -83,15 +81,13 @@ void unload_data()
 
 void game_draw()
 {
-    SDL_SetRenderTarget(renderer, backbuffer);
+    enable_backbuffer_rendering();
     cls(0, 50, 0);
 
     tilemap_draw(tilesheets[0]);
 
     player_draw_sprites();
-
-
-    SDL_SetRenderTarget(renderer, NULL);
+    disable_backbuffer_rendering();
 
     flip();
 }
