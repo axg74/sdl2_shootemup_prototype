@@ -10,6 +10,18 @@ bool key_fire1;
 bool key_fire2;
 bool window_closed;
 
+void init_events()
+{
+    key_back = false;
+    key_left = false;
+    key_right = false;
+    key_up = false;
+    key_down = false;
+    key_fire1 = false;
+    key_fire2 = false;
+    window_closed = false;
+}
+
 void check_keys(SDL_KeyCode key_code, bool flag)
 {
     switch(key_code)

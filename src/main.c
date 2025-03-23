@@ -104,13 +104,12 @@ void game_update()
 
 bool game_init()
 {
-    game_scale = GAME_INITIAL_SCALE;
-    if (!init_window())
+    if (!init_window(GAME_WIDTH, GAME_HEIGHT, GAME_INITIAL_SCALE))
     {
         return false;
     }
 
-    window_closed = false;
+    init_events();
     return true;
 }
 

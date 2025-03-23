@@ -8,8 +8,6 @@
 #define GAME_HEIGHT 240
 #define GAME_INITIAL_SCALE 3
 
-#define PLAYER_MAX_SHOTS 30
-
 extern SDL_Texture *sprite_sheets[5];
 extern int game_scale;
 

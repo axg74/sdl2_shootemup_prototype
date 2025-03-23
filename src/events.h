@@ -12,6 +12,7 @@ extern bool key_fire1;
 extern bool key_fire2;
 extern bool window_closed;
 
+void init_events(void);
 void check_events(void);
 void check_keys(SDL_KeyCode key_code, bool flag);
 

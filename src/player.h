@@ -6,6 +6,8 @@
 #include "main.h"
 #include "sprite.h"
 
+#define PLAYER_MAX_SHOTS 30
+
 extern float player_shot_delay;
 extern void player_init(SDL_Texture *texture);
 

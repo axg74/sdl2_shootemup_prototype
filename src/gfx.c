@@ -13,16 +13,22 @@ SDL_Texture *sprite_sheets[5];
 SDL_Texture *tilesheets[5];
 
 int game_scale;
+int screen_width;
+int screen_height;
 
-bool init_window()
+bool init_window(int width, int height, int scale)
 {
-    if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+    screen_width = width;
+    screen_height = height;
+    game_scale = scale;
+    
+    if (SDL_Init(SDL_INIT_VIDEO) < 0)
         return false;
 
     window = SDL_CreateWindow(window_title,
                               SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                              GAME_WIDTH * game_scale,
-                              GAME_HEIGHT * game_scale,
+                              screen_width * game_scale,
+                              screen_height * game_scale,
                               SDL_WINDOW_SHOWN);
     if (window == NULL) return false;
 
@@ -32,7 +38,7 @@ bool init_window()
     backbuffer = SDL_CreateTexture(renderer,
                                    SDL_PIXELFORMAT_RGBA8888,
                                    SDL_TEXTUREACCESS_TARGET,
-                                   GAME_WIDTH, GAME_HEIGHT);
+                                   screen_width, screen_height);
     if (backbuffer == NULL) return false;
 
     return true;
@@ -82,13 +88,13 @@ void flip()
     SDL_Rect src, dest;
     src.x = 0;
     src.y = 0;
-    src.w = GAME_WIDTH;
-    src.h = GAME_HEIGHT;
+    src.w = screen_width;
+    src.h = screen_height;
 
     dest.x = 0;
     dest.y = 0;
-    dest.w = GAME_WIDTH * game_scale;
-    dest.h = GAME_HEIGHT * game_scale;
+    dest.w = screen_width * game_scale;
+    dest.h = screen_height * game_scale;
     SDL_RenderCopy(renderer, backbuffer, &src, &dest);
     SDL_RenderPresent(renderer);
 }

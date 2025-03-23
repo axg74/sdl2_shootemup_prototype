@@ -6,9 +6,8 @@
 
 extern SDL_Texture *sprite_sheets[5];
 extern SDL_Texture *tilesheets[5];
-extern int game_scale;
 
-bool init_window(void);
+bool init_window(int width, int height, int scale);
 void destroy_window(void);
 void cls(Uint8 red, Uint8 green, Uint8 blue);
 void flip(void);
