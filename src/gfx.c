@@ -51,6 +51,11 @@ void destroy_window()
     if(window != NULL) SDL_DestroyWindow(window);
 }
 
+void exit_app()
+{
+    SDL_Quit();
+}
+
 SDL_Texture* load_bmp(const char *filename)
 {
     SDL_Surface *surface;

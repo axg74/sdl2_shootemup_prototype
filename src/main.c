@@ -1,11 +1,8 @@
-#include <SDL2/SDL.h>
 #include <stdbool.h>
 #include <math.h>
 #include <stdio.h>
 
-#include "main.h"
 #include "gfx.h"
-#include "sprite.h"
 #include "tilemap.h"
 #include "delta_time.h"
 #include "player.h"
@@ -124,7 +121,7 @@ bool game_init()
 void game_quit()
 {
     destroy_window();
-    SDL_Quit();
+    exit_app();
 }
 
 void scroll_level()

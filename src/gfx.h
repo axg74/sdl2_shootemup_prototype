@@ -6,6 +6,7 @@
 
 bool init_window(int width, int height, int scale);
 void destroy_window(void);
+void exit_app(void);
 
 SDL_Texture* load_bmp(const char *filename);
 void destroy_bmp(SDL_Texture *texture);
