@@ -1,5 +1,45 @@
 # sdl2_shootemup_prototype
-a shoot em up 2d game hobby project in C using SDL2 library. I use VScode as code-editor.
+a shoot em up 2d game hobby project in C using SDL2 library.
+
+used tools:
+    
+    VScode
+    ====================================================
+    tdm-gcc c-compiler 
+    
+    https://github.com/jmeubank tdm-gcc/releases/download/v10.3.0-tdm64-2/tdm64-gcc-10.3.0-2.exe
+    ====================================================
+    SDL2-Library
+ 
+    https://github.com/libsdl-org/SDL/releases/tag/
+    release-2.32.2
+
+# basic considerations
+
+* horizontal scrolling shoot´em´up game like in the 80s/90s.
+* graphics will be stored in BMP-format with a colorkey-mask for the transparency, like in 90s
+* no dynamic memory management, e.g. for sprite data-structures, the number of sprites is fixed from the beginning 
+
+
+# folders
+
+### 0aseprite
+
+    game graphics in aseprite-format
+
+
+### gamedata 
+
+    contains all game data like graphics, music, sounds and level-data
+
+### build
+
+    the compiled and linked code
+
+
+### src
+
+    the c-source code of the project
 
 # in-game keys
 
@@ -8,21 +48,11 @@ a shoot em up 2d game hobby project in C using SDL2 library. I use VScode as cod
     escape-key to quit
 
 
-# C-Compiler 
-
-I use the tdm-gcc compiler 
-
-
-https://github.com/jmeubank/tdm-gcc/releases/download/v10.3.0-tdm64-2/tdm64-gcc-10.3.0-2.exe
-
-
-Add the path to the windows system enviroment variables.
-
 # SDL2-dev libraries sources and path under windows 10/11
 
-https://github.com/libsdl-org/SDL/releases/tag/release-2.32.2
-
     C:\SDL2-2.32.2-dev\
+
+    take a look a the simple Makefile
 
 # Compilation
 
