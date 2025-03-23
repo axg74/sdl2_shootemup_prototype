@@ -11,8 +11,6 @@
 #include "player.h"
 #include "events.h"
 
-bool is_running;
-
 bool game_init(void);
 void game_quit(void);
 void main_loop(void);
@@ -39,8 +37,6 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    calc_tilepos_tab();
-
     main_loop();
 
     unload_data();
@@ -50,26 +46,22 @@ int main(int argc, char *argv[])
 
 void main_loop()
 {
-    player_shot_delay = 0.0f;
+    bool is_running;
+
     player_init(sprite_sheets[0]);
+    tilemap_init();
 
     delta_time_init();
-
-    scroll_pos_x = 0.0f;
-    scroll_speed_x = 20.0f;
 
     is_running = true;
 
     while(is_running)
     {
-        delta_time_update();
-
-        check_events();
-        if (key_back || window_closed) is_running = false;
-
         game_update();
         game_draw();
         SDL_Delay(1);
+
+        if (key_back || window_closed) is_running = false;
     }
 }
 
@@ -106,6 +98,9 @@ void game_draw()
 
 void game_update()
 {
+    delta_time_update();
+    check_events();
+
     player_update();
     player_update_shots();
     scroll_level_background();

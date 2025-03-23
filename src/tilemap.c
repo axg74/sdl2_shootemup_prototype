@@ -11,19 +11,9 @@ float scroll_speed_x;
 
 int tile_postab[MAX_TILES * 2];
 
-void calc_tilepos_tab()
+void scroll_level_background()
 {
-    int c = 0;
-
-    for (int y = 0; y < TILESHEET_HEIGHT / TILE_SIZE; y++)
-    {
-        for (int x = 0; x < TILESHEET_WIDTH / TILE_SIZE; x++)
-        {
-           tile_postab[c+0] = x * TILE_SIZE;
-           tile_postab[c+1] = y * TILE_SIZE;
-           c += 2;
-        }
-    }
+    scroll_pos_x += scroll_speed_x * get_delta_time();
 }
 
 void tilemap_draw(SDL_Texture *tileset)
@@ -43,7 +33,25 @@ void tilemap_draw(SDL_Texture *tileset)
     }
 }
 
-void scroll_level_background()
+void calc_tilepos_tab()
 {
-    scroll_pos_x += scroll_speed_x * get_delta_time();
+    int c = 0;
+
+    for (int y = 0; y < TILESHEET_HEIGHT / TILE_SIZE; y++)
+    {
+        for (int x = 0; x < TILESHEET_WIDTH / TILE_SIZE; x++)
+        {
+           tile_postab[c+0] = x * TILE_SIZE;
+           tile_postab[c+1] = y * TILE_SIZE;
+           c += 2;
+        }
+    }
+}
+
+void tilemap_init()
+{
+    calc_tilepos_tab();
+
+    scroll_pos_x = 0.0f;
+    scroll_speed_x = 20.0f;
 }

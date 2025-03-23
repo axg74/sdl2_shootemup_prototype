@@ -38,6 +38,7 @@ int player_get_shot()
 void player_init(SDL_Texture *texture)
 {
     float initial_speed = 60.0f;
+    player_shot_delay = 0.0f;
 
     sprite_set_pos(&spr_player, 24.0f, 64.0f);
     sprite_set_size(&spr_player, 24, 16);
