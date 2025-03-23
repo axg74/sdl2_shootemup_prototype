@@ -1,7 +1,6 @@
 #include <stdbool.h>
 
 #include "player.h"
-#include "main.h"
 #include "sprite.h"
 #include "delta_time.h"
 #include "gfx.h"
@@ -10,16 +9,15 @@ float player_shot_delay;
 Sprite spr_player;
 Sprite spr_player_shots[PLAYER_MAX_SHOTS];
 
-void player_init_shots(SDL_Texture *texture)
+void player_init_shots()
 {
     for (int i = 0; i < PLAYER_MAX_SHOTS; i++)
     {
         sprite_set_size(&spr_player_shots[i], 16, 7);
         sprite_set_source(&spr_player_shots[i], 48, 0);
-        sprite_set_sprite_sheet(&spr_player_shots[i], texture);
+        sprite_set_sprite_sheet(&spr_player_shots[i], get_spritesheet(0));
         sprite_disable(&spr_player_shots[i]);
     }
- //    sprite_set_speed(&spr_player_shots[0], initial_speed, initial_speed);
 }
 
 int player_get_shot()
@@ -35,7 +33,7 @@ int player_get_shot()
      return -1;
 }
 
-void player_init(SDL_Texture *texture)
+void player_init(int spritesheet_index)
 {
     float initial_speed = 60.0f;
     player_shot_delay = 0.0f;
@@ -43,11 +41,11 @@ void player_init(SDL_Texture *texture)
     sprite_set_pos(&spr_player, 24.0f, 64.0f);
     sprite_set_size(&spr_player, 24, 16);
     sprite_set_source(&spr_player, 48, 16);
-    sprite_set_sprite_sheet(&spr_player, texture);
+    sprite_set_sprite_sheet(&spr_player, get_spritesheet(spritesheet_index));
     sprite_set_speed(&spr_player, initial_speed, initial_speed);
     sprite_enable(&spr_player);
 
-    player_init_shots(texture);
+    player_init_shots();
 }
 
 void player_update()

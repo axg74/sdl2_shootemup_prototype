@@ -47,15 +47,14 @@ int main(int argc, char *argv[])
 
 void game_mainloop()
 {
-    bool is_running;
+    bool is_running = true;
 
-    player_init(get_spritesheet(0));
+    player_init();
     tilemap_init();
     delta_time_init();
 
     tilemap_set_scroll_pos_x(0.0f);
     tilemap_set_scroll_speed_x(20.0f);
-    is_running = true;
 
     while(is_running)
     {
