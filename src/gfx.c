@@ -1,7 +1,5 @@
 #include <SDL2/SDL.h>
 
-#include <stdio.h>
-
 #include "gfx.h"
 #include "main.h"
 #include "config.h"
