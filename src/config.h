@@ -1,0 +1,15 @@
+#ifndef _CONFIG_H
+#define _CONFIG_H
+
+#define GAME_WIDTH 320
+#define GAME_HEIGHT 240
+#define GAME_INITIAL_SCALE 3
+
+#define MAX_SPRITE_SHEETS 10
+#define MAX_TILE_SHEETS 10
+
+#define COLORKEY_RED 0
+#define COLORKEY_GREEN 255
+#define COLORKEY_BLUE 255
+
+#endif

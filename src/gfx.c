@@ -2,6 +2,7 @@
 
 #include "gfx.h"
 #include "main.h"
+#include "config.h"
 
 char window_title[] = "Game-2D SDL2";
 
@@ -9,8 +10,8 @@ SDL_Window *window;
 SDL_Renderer *renderer;
 SDL_Texture *backbuffer;
 
-SDL_Texture *sprite_sheets[5];
-SDL_Texture *tilesheets[5];
+SDL_Texture *sprite_sheets[MAX_SPRITE_SHEETS];
+SDL_Texture *tilesheets[MAX_TILE_SHEETS];
 
 int game_scale;
 int screen_width;
@@ -64,7 +65,7 @@ SDL_Texture* load_bmp(const char *filename)
     surface = SDL_LoadBMP(filename);
     if (surface == NULL) return NULL;
 
-    SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, 0, 255, 255));
+    SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, COLORKEY_RED, COLORKEY_GREEN, COLORKEY_BLUE));
 
     texture = SDL_CreateTextureFromSurface(renderer, surface);
     if (texture == NULL)
@@ -156,6 +157,7 @@ void flip()
     dest.h = screen_height * game_scale;
     SDL_RenderCopy(renderer, backbuffer, &src, &dest);
     SDL_RenderPresent(renderer);
+    SDL_Delay(1);
 }
 
 void enable_backbuffer_rendering()

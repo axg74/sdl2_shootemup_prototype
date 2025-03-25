@@ -19,9 +19,9 @@ void tilemap_draw(SDL_Texture *tileset)
     int tile_id = 2;
     int soft_scroll_x = (int) scroll_pos_x % TILE_SIZE;
 
-    for (int y = 0; y < GAME_HEIGHT / TILE_SIZE; y++)
+    for (int y = 0; y < get_screen_height() / TILE_SIZE; y++)
     {
-        for (int x = 0; x < GAME_WIDTH / TILE_SIZE + 1; x++)
+        for (int x = 0; x < get_screen_width() / TILE_SIZE + 1; x++)
         {
             int tile_source_x = tile_postab[tile_id * 2 + 0];
             int tile_source_y = tile_postab[tile_id * 2 + 1];
