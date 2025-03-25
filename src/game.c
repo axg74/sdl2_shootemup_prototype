@@ -60,6 +60,9 @@ void game_draw()
     tilemap_draw(get_tilesheet(0));
 
     player_draw_sprites();
+
+    draw_bmp_text(get_spritesheet(0), 1, 1, 0, 504, "TEST TEXT OUTPUT");
+
     disable_backbuffer_rendering();
 }
 

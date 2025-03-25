@@ -1,5 +1,7 @@
 #include <SDL2/SDL.h>
 
+#include <stdio.h>
+
 #include "gfx.h"
 #include "main.h"
 #include "config.h"
@@ -204,6 +206,21 @@ void sprite_draw(Sprite *spr)
         dest.h = src.h;
 
         SDL_RenderCopy(renderer, spr->texture, &src, &dest);
+    }
+}
+
+void draw_bmp_text(SDL_Texture *texture, int x, int y, int source_x, int source_y, const char *text)
+{
+    int ascii_start_code = 33;
+    int font_width = 8;
+    int font_height = 7;
+
+    while (*text != 0)
+    {
+        int x_offset = ((*text) - ascii_start_code) * font_width;
+        draw_subimage_rect(texture, x, y, font_width, font_height, source_x + x_offset, source_y);
+        x += font_width;
+        text++;
     }
 }
 

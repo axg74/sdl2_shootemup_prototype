@@ -27,6 +27,8 @@ void disable_backbuffer_rendering(void);
 void draw_subimage_rect(SDL_Texture *texture, int x, int y, int width, int height, int source_x, int source_y);
 void sprite_draw(Sprite *spr);
 
+void draw_bmp_text(SDL_Texture *texture, int x, int y, int source_x, int source_y, const char *text);
+
 int get_screen_width(void);
 int get_screen_height(void);
 #endif

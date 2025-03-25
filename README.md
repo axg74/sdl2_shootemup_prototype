@@ -26,6 +26,11 @@ used tools:
 * no dynamic memory management, e.g. for sprite data-structures, the number of sprites is fixed from the beginning 
 * no sprite-object creation in memory while playing, deactivating unused sprite-objects, only (simple sprite pooling).
 
+
+#### most important! have fun and keep all things pragmatic
+
+<br/>
+
 # folders
 
 ### 0aseprite
@@ -67,5 +72,6 @@ used tools:
 # Compilation
 
     mingw32-make
-    mingw32-run
-
+    mingw32-make run
+    mingw32-make clean
+    
