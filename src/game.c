@@ -6,8 +6,11 @@
 #include "events.h"
 #include "statemachine.h"
 #include "game.h"
+#include "file.h"
 
 extern Gamestate current_game_state;
+
+char *level_data[10];
 
 void game_mainloop()
 {
@@ -33,6 +36,16 @@ void game_mainloop()
 
 bool load_data()
 {
+    level_data[0] = load_textfile("gamedata/level1.tmx");
+    if (level_data[0] == NULL)
+    {
+        return false;
+    }
+
+    printf("%s", level_data[0]);
+
+    unload_textfile(level_data[0]);
+
     if (!load_spritesheet(0, "gamedata/spritesheet1.bmp"))
     {
         return false;
