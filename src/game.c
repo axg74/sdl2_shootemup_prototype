@@ -1,3 +1,6 @@
+#include <string.h>
+#include <stdio.h>
+
 #include "config.h"
 #include "gfx.h"
 #include "tilemap.h"
@@ -37,9 +40,18 @@ void game_mainloop()
 bool load_data()
 {
     level_data[0] = load_textfile("gamedata/level1.tmx");
+
     if (level_data[0] == NULL)
     {
         return false;
+    }
+
+    char *ptr = level_data[0];
+    int length = (int) strlen(level_data[0]);
+    for (int i = 0; i < length - 2; i++) 
+    {
+        if (ptr[i] == 10) ptr[i] = ",";
+        if (ptr[i] == 13)  ptr[i] = "";
     }
 
     printf("%s", level_data[0]);
