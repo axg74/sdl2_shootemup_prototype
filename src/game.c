@@ -11,22 +11,25 @@
 #include "game.h"
 #include "file.h"
 
-extern Gamestate current_game_state;
+void create_tilemap(void);
+void destroy_tilemap(void);
 
-char *level_data[10];
+extern Gamestate current_game_state;
 
 void game_mainloop()
 {
     bool is_running = true;
 
-    player_init();
     tilemap_init();
     delta_time_init();
+    player_init();
 
     tilemap_set_scroll_pos_x(0.0f);
     tilemap_set_scroll_speed_x(20.0f);
 
     current_game_state = STATE_PLAY;
+
+    get_tilemap_data(0, 0);
 
     while(is_running)
     {
@@ -39,24 +42,7 @@ void game_mainloop()
 
 bool load_data()
 {
-    level_data[0] = load_textfile("gamedata/level1.tmx");
-
-    if (level_data[0] == NULL)
-    {
-        return false;
-    }
-
-    char *ptr = level_data[0];
-    int length = (int) strlen(level_data[0]);
-    for (int i = 0; i < length - 2; i++) 
-    {
-        if (ptr[i] == 10) ptr[i] = ",";
-        if (ptr[i] == 13)  ptr[i] = "";
-    }
-
-    printf("%s", level_data[0]);
-
-    unload_textfile(level_data[0]);
+    if (!load_tmx_tilemap("gamedata/level.tmx", 0)) return false;
 
     if (!load_spritesheet(0, "gamedata/spritesheet1.bmp"))
     {
@@ -73,6 +59,7 @@ bool load_data()
 
 void unload_data()
 {
+    unload_all_tmx_tilemaps();
     unload_spritesheet(0);
     unload_tilesheet(0);
 }
@@ -82,7 +69,7 @@ void game_draw()
     enable_backbuffer_rendering();
     cls(0, 50, 0);
 
-    tilemap_draw(get_tilesheet(0));
+    tilemap_draw(get_tilesheet(0), 0);
 
     player_draw_sprites();
 
@@ -112,13 +99,34 @@ bool game_init()
     }
 
     init_events();
+    create_tilemap();
+
     return true;
 }
 
 void game_quit()
 {
     destroy_window();
+    destroy_tilemap();
     exit_app();
+}
+
+void create_tilemap()
+{
+    set_tilemap_width(200);
+    set_tilemap_height(15);
+
+    if (!alloc_tilemap(0))
+    {
+        unload_data();
+        game_quit();
+        return -1;
+    }
+}
+
+void destroy_tilemap()
+{
+    free_tilemap(0);
 }
 
 void scroll_level()

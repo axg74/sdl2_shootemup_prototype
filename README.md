@@ -3,19 +3,28 @@ a 2d game shoot em up hobby project in C using SDL2 library, fresh at the beginn
 
 used tools:
     
-    Visual Studio Code
 
-    TDM-gcc (C-Compiler) 
-    https://github.com/jmeubank tdm-gcc/releases/download/v10.3.0-tdm64-2/tdm64-gcc-10.3.0-2.exe
+==> Visual Studio Code
+
+https://code.visualstudio.com
+
+
+==> TDM-gcc (C-Compiler) 
+
+https://jmeubank.github.io/tdm-gcc/download
     
-    SDL2-Library (Simple DirectMedia Layer)
-    https://github.com/libsdl-org/SDL/releases/tag/release-2.32.2
+==> SDL2-Library (Simple DirectMedia Layer)
 
-    Aseprite (pixel based graphics/animation tool)
-    https://www.aseprite.org/
+https://github.com/libsdl-org/SDL/releases/tag/release-2.32.2
 
-    Tiled (tile based map-editor tool)
-    https://www.mapeditor.org/
+==> Aseprite (pixel based graphics/animation tool)
+
+https://www.aseprite.org/
+
+
+==> Tiled (tile based map-editor tool)
+
+https://www.mapeditor.org/
 
 
 
