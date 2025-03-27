@@ -15,6 +15,10 @@
 #define TILESHEET_WIDTH 256
 #define TILESHEET_HEIGHT 256
 
+#define TILELAYER_FOREGROUND "tilelayer_foreground"
+#define TILELAYER_BACKGROUND "tilelayer_background"
+#define TILELAYER_COLLISION "tilelayer_collision"
+
 #define MAX_TILEMAP_WIDTH 500
 #define MAX_TILEMAP_HEIGHT 500
 

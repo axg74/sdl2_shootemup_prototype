@@ -11,9 +11,6 @@
 #include "game.h"
 #include "file.h"
 
-void create_tilemap(void);
-void destroy_tilemap(void);
-
 extern Gamestate current_game_state;
 
 void game_mainloop()
@@ -29,7 +26,7 @@ void game_mainloop()
 
     current_game_state = STATE_PLAY;
 
-    get_tilemap_data(0, 0);
+    get_tilemap_data(0, 0, TILELAYER_BACKGROUND);
 
     while(is_running)
     {
@@ -99,7 +96,11 @@ bool game_init()
     }
 
     init_events();
-    create_tilemap();
+    
+    if (!create_tilemap())
+    {
+        return false;
+    }
 
     return true;
 }
@@ -111,7 +112,7 @@ void game_quit()
     exit_app();
 }
 
-void create_tilemap()
+bool create_tilemap()
 {
     set_tilemap_width(200);
     set_tilemap_height(15);
@@ -120,8 +121,10 @@ void create_tilemap()
     {
         unload_data();
         game_quit();
-        return -1;
+        return false;
     }
+
+    return true;
 }
 
 void destroy_tilemap()

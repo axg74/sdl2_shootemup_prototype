@@ -200,54 +200,50 @@ void tilemap_draw(SDL_Texture *tileset, int tilemap_layer_index)
     }
 }
 
-void get_tilemap_data(int mapdata_index, int tilemap_layer_index)
+void get_tilemap_data(int mapdata_index, int tilemap_layer_index, const char *tilelayer_name)
 {
+    const char tmx_csv_starttag[] = "<data encoding=\"csv\">";
+    const char tmx_csv_endtag[] = "</data>";
     char *csv_data;
 
-    char tmx_csv_starttag[] = "<data encoding=\"csv\">";
-    char tmx_csv_endtag[] = "</data>";
-
+    int layer_startpos = get_string_pos(level_data[mapdata_index], tilelayer_name);
     int tmx_csv_tag_len = strlen(tmx_csv_starttag);
     int tmx_csv_endtag_len = strlen(tmx_csv_endtag);
+    int csv_start_pos = get_string_pos(level_data[mapdata_index] + layer_startpos, tmx_csv_starttag);
+    int csv_end_pos = get_string_pos(level_data[mapdata_index] + layer_startpos, tmx_csv_endtag);
+    int start_pos = csv_start_pos + layer_startpos + tmx_csv_tag_len + 1;
 
-    char *txt = strstr(level_data[mapdata_index], tmx_csv_starttag);
+    char *ptr2 = level_data[mapdata_index] + csv_end_pos + layer_startpos;
+    *ptr2 = 0;
 
-    if (txt != NULL)
+    char *ptr = level_data[mapdata_index] + start_pos;
+    printf("%s\n", ptr);
+
+    while (*ptr != '\0')
     {
-        int csv_start_pos = get_string_pos(level_data[mapdata_index], tmx_csv_starttag) + tmx_csv_tag_len + 1;
-        int csv_end_pos = get_string_pos(level_data[mapdata_index], tmx_csv_endtag) - 2;
+        if (*ptr == '\n') *ptr = ',';
+        if (*ptr == '\r') *ptr = ' ';
+        ptr++;
+    }
 
-        char *ptr2 = level_data[mapdata_index] + csv_end_pos;
-        *ptr2 = 0;
+    csv_data = strtok(level_data[mapdata_index] + start_pos, ",");
+    int *tilemap = tilemap_layer_data[tilemap_layer_index];
+    int tilemap_size = get_tilemap_width() * get_tilemap_height();
 
-        char *ptr = level_data[mapdata_index] + csv_start_pos;
-        while (*ptr != '\0')
+    for (int i = 0; i < tilemap_size; i++)
+    {
+        if (csv_data != NULL)
         {
-            if (*ptr == '\n') *ptr = ',';
-            if (*ptr == '\r') *ptr = ' ';
-            ptr++;
+            int tile_id = atoi(csv_data);
+            *tilemap = tile_id;
+            csv_data = strtok(NULL, ",");
+        }
+        else 
+        {
+            fprintf(stderr, "warning: TMX-CSV error at index %d.\n", i);
+            break;
         }
 
-        csv_data = strtok(level_data[mapdata_index] + csv_start_pos, ",");
-        int *tilemap = tilemap_layer_data[tilemap_layer_index];
-
-        int tilemap_size = get_tilemap_width() * get_tilemap_height();
-
-        for (int i = 0; i < tilemap_size; i++)
-        {
-            if (csv_data != NULL)
-            {
-                int tile_id = atoi(csv_data);
-                *tilemap = tile_id;
-                csv_data = strtok(NULL, ",");
-            }
-            else 
-            {
-                fprintf(stderr, "warning: TMX-CSV error at index %d.\n", i);
-                break;
-            }
-
-            tilemap++;
-        }
+        tilemap++;
     }
 }

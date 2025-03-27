@@ -31,7 +31,7 @@ bool load_tmx_tilemap(const char *filename, int mapdata_index);
 void unload_tmx_tilemap(int mapdata_index);
 void unload_all_tmx_tilemaps(void);
 
-void get_tilemap_data(int mapdata_index, int tilemap_layer_index);
+void get_tilemap_data(int mapdata_index, int tilemap_layer_index, const char *tilelayer_name);
 #endif
 
 

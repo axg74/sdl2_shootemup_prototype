@@ -13,6 +13,8 @@ void game_quit(void);
 bool load_data(void);
 void unload_data(void);
 
+bool create_tilemap(void);
+void destroy_tilemap(void);
 void scroll_level(void);
 
 #endif
