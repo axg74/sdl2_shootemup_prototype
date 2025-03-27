@@ -1,6 +1,9 @@
 # sdl2_shootemup_prototype
 a 2d game shoot em up hobby project in C using SDL2 library, fresh at the beginning of development.
 
+Take a look at the WIKI ... for some descriptions
+
+
 used tools:
     
 
