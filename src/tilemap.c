@@ -217,7 +217,6 @@ void get_tilemap_data(int mapdata_index, int tilemap_layer_index, const char *ti
     *ptr2 = 0;
 
     char *ptr = level_data[mapdata_index] + start_pos;
-    printf("%s\n", ptr);
 
     while (*ptr != '\0')
     {
